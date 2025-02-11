@@ -1,4 +1,3 @@
-
 -- CREDITS
 -- TJ DeVries
 -- Typecraft
@@ -39,11 +38,11 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move fox=cus to the upper w
 
 -- Flash text being yanked
 vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+    desc = 'Highlight when yanking (copying) text',
+    group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+    callback = function()
+        vim.highlight.on_yank()
+    end,
 })
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
