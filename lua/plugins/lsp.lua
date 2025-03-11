@@ -1,3 +1,6 @@
+
+lsps = { "lua_ls", "rust_analyzer", "html", "cssls", "tsserver" }
+
 return {
     {
         "williamboman/mason.nvim",
@@ -9,7 +12,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "rust_analyzer" }
+                ensure_installed = lsps
             })
         end
     },
@@ -18,14 +21,12 @@ return {
         lazy = false,
         config = function()
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
             local lspconfig = require("lspconfig")
-            lspconfig.lua_ls.setup({
-                capabilities = capabilities
-            })
-            lspconfig.rust_analyzer.setup({
-                capabilities = capabilities
-            })
+            for k, v in pairs(lsps) do
+                lspconfig[v].setup({
+                    capabilities = capabilities
+                })
+            end
 
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
