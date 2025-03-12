@@ -1,5 +1,5 @@
 
-lsps = { "lua_ls", "rust_analyzer", "html", "cssls", "tsserver" }
+local lsps = { "lua_ls", "rust_analyzer", "html", "cssls", "ts_ls" }
 
 return {
     {
