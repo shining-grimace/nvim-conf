@@ -5,8 +5,16 @@ return {
         dependencies = { 'nvim-lua/plenary.nvim' },
         config = function()
             local builtin = require("telescope.builtin")
-            vim.keymap.set('n', '<leader>sf', builtin.find_files, {})
-            vim.keymap.set('n', '<leader>sg', builtin.live_grep, {})
+            local function telescope_closes_neotree(telescope_func)
+                return function(...)
+                    vim.cmd("Neotree close")
+                    telescope_func(...)
+                end
+            end
+            vim.keymap.set('n', '<leader>sf',
+                telescope_closes_neotree(builtin.find_files), {})
+            vim.keymap.set('n', '<leader>sg',
+                telescope_closes_neotree(builtin.live_grep), {})
         end
     },
     {
