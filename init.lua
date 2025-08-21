@@ -72,5 +72,5 @@ require("lazy").setup({
 	spec = {
 		{ import = "plugins" },
 	},
-	checker = { enabled = true }, -- Automatically check for plugin updates
+	checker = { enabled = false }, -- Do not automatically check for plugin updates
 })
