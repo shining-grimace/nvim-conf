@@ -7,7 +7,7 @@ return {
 			{ "mason-org/mason.nvim", opts = {} },
 			"mason-org/mason-lspconfig.nvim",
 			{ "j-hui/fidget.nvim", opts = {} },
-			"saghen/blink.cmp",
+			-- "saghen/blink.cmp" Defined in completions.lua; redefining causes unexpected config
 		},
 		config = function()
 			vim.api.nvim_create_autocmd("LspAttach", {
